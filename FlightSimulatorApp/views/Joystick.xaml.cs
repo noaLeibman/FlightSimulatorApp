@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightSimulatorApp.Views
+namespace FlightSimulatorApp.views
 {
     /// <summary>
     /// Interaction logic for Joystick.xaml
     /// </summary>
     public partial class Joystick : UserControl
     {
+        double thex;
         Storyboard mySTB;
         public Joystick()
         {
@@ -48,11 +50,13 @@ namespace FlightSimulatorApp.Views
                 Point last_good = new Point();
                 if (Math.Sqrt(x * x + y * y) <= KnobBase.Width / 2)
                 {
+                    currX = x;
                     knobPosition.X = x;
                     knobPosition.Y = y;
                     last_good = new Point(x, y);
                     if (Math.Sqrt(x * x + y * y) > KnobBase.Width / 2)
                     {
+                        currX = x;
                         knobPosition.X = x;
                         knobPosition.Y = y;
                     }
@@ -60,18 +64,26 @@ namespace FlightSimulatorApp.Views
 
             }
         }
+        public static readonly DependencyProperty currXProperty = DependencyProperty.Register("currX", typeof(double), typeof(Joystick));
 
-        public Point returnValues()
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public double currX
         {
-           double xpos = knobPosition.X;
-           double ypos = knobPosition.Y;
-            
-            Point currPoint = new Point(xpos,ypos);
-            return currPoint;
+            get{
+                return (double)GetValue(currXProperty);
+            }
+            set {
+                {
+                    SetValue(currXProperty, value);
+                
+                }
+            }
         }
 
         private void Base_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            currX = 0;
             knobPosition.X = 0;
             knobPosition.Y = 0;
             mySTB.Begin();
