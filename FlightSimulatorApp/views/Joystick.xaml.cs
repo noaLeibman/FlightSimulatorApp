@@ -22,7 +22,6 @@ namespace FlightSimulatorApp.views
     /// </summary>
     public partial class Joystick : UserControl
     {
-        double thex;
         Storyboard mySTB;
         public Joystick()
         {
@@ -50,13 +49,17 @@ namespace FlightSimulatorApp.views
                 Point last_good = new Point();
                 if (Math.Sqrt(x * x + y * y) <= KnobBase.Width / 2)
                 {
-                    currX = x;
+                    CurrX = (double)System.Math.Round(x / 45, 2);
+                    CurrY = (double)System.Math.Round(y / -45, 2);
                     knobPosition.X = x;
                     knobPosition.Y = y;
                     last_good = new Point(x, y);
                     if (Math.Sqrt(x * x + y * y) > KnobBase.Width / 2)
                     {
-                        currX = x;
+                        CurrX = (double)System.Math.Round(x / 45, 2);
+                   
+                    
+                    CurrY = (double)System.Math.Round(y / -45, 2);
                         knobPosition.X = x;
                         knobPosition.Y = y;
                     }
@@ -64,26 +67,38 @@ namespace FlightSimulatorApp.views
 
             }
         }
-        public static readonly DependencyProperty currXProperty = DependencyProperty.Register("currX", typeof(double), typeof(Joystick));
+        public static readonly DependencyProperty CurrYProperty = DependencyProperty.Register("CurrY", typeof(double), typeof(Joystick));
+        public double CurrY
+        {
+            get
+            {
+                return (double)GetValue(CurrYProperty);
+            }
+            set
+            {
+                {
+                    SetValue(CurrYProperty, value);
+                }
+            }
+        }
+        public static readonly DependencyProperty CurrXProperty = DependencyProperty.Register("CurrX", typeof(double), typeof(Joystick));
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public double currX
+        public double CurrX
         {
             get{
-                return (double)GetValue(currXProperty);
+                return (double)GetValue(CurrXProperty);
             }
             set {
                 {
-                    SetValue(currXProperty, value);
-                
+                    SetValue(CurrXProperty, value);
                 }
             }
         }
 
         private void Base_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            currX = 0;
+            CurrX = 0.00;
+            CurrY = 0.00;
             knobPosition.X = 0;
             knobPosition.Y = 0;
             mySTB.Begin();
