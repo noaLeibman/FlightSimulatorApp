@@ -23,15 +23,15 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
-   
         public MainWindow()
         {
-          
             InitializeComponent();
-
-
+            DataContext = new
+            {
+                (Application.Current as App).ViewModel.steers, 
+                (Application.Current as App).ViewModel.map, 
+                (Application.Current as App).ViewModel.cp, 
+            };
         }
     }
 }

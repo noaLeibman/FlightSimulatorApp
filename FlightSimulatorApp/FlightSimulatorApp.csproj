@@ -60,13 +60,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\INotifyPropertyChanged.cs" />
+    <Compile Include="Model\ITelnetClient.cs" />
+    <Compile Include="Model\TelnetClient.cs" />
     <Compile Include="views\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\Joystick.xaml.cs">
+      <DependentUpon>Joystick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\JoystickControl.xaml.cs">
+      <DependentUpon>JoystickControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
     <Compile Include="view_models\VM_ControlPanel.cs" />
+    <Compile Include="view_models\VM_Main.cs" />
     <Compile Include="view_models\VM_Map.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +93,14 @@
     <Page Include="views\ControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\Joystick.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="views\JoystickControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="views\Map.xaml">
       <SubType>Designer</SubType>
