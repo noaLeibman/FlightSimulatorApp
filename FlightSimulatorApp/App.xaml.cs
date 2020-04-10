@@ -13,6 +13,7 @@ namespace FlightSimulatorApp
         public VM_Main ViewModel { get; internal set; }
         private void Application_Startup(Object sender, StartupEventArgs e)
         {
+            Console.WriteLine("starting");
             ISimulatorModel model = new SimulatorModel(new TelnetClient());
             ViewModel = new VM_Main(model);
         }
