@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.view_models
 {
-    class VM_ControlPanel
+    public class VM_ControlPanel
     {
         public string VM_heading { get { return "8"; } }
         public string VM_verticalSpeed { get { return "309"; } }

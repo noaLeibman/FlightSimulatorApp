@@ -58,13 +58,11 @@ namespace FlightSimulatorApp.views
                     {
                         CurrX = (double)System.Math.Round(x / 45, 2);
                    
-                    
                     CurrY = (double)System.Math.Round(y / -45, 2);
                         knobPosition.X = x;
                         knobPosition.Y = y;
                     }
                 }
-
             }
         }
         public static readonly DependencyProperty CurrYProperty = DependencyProperty.Register("CurrY", typeof(double), typeof(Joystick));
@@ -91,6 +89,7 @@ namespace FlightSimulatorApp.views
             set {
                 {
                     SetValue(CurrXProperty, value);
+                    
                 }
             }
         }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{99FF7149-3389-478E-981C-70EFE4261681}</ProjectGuid>
+    <ProjectGuid>{1BCF780E-0027-42EA-BECC-196A66895BD5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FlightSimulatorApp</RootNamespace>
-    <AssemblyName>FlightSimulatorApp</AssemblyName>
+    <AssemblyName>FlightSimulator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Maps.MapControl.WPF">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Bing Maps WPF Control\V1\Libraries\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Bing Maps WPF Control\V1\Libraries\Microsoft.Maps.MapControl.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -60,9 +60,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\INotifyPropertyChanged.cs" />
-    <Compile Include="Model\ITelnetClient.cs" />
-    <Compile Include="Model\TelnetClient.cs" />
+    <Compile Include="Model\ISimulatorModel.cs" />
+    <Compile Include="Model\SimulatorModel.cs" />
     <Compile Include="views\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
     </Compile>
@@ -72,12 +71,27 @@
     <Compile Include="views\JoystickControl.xaml.cs">
       <DependentUpon>JoystickControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\TelnetClient.cs" />
+    <Compile Include="Model\ITelnetClient.cs" />
     <Compile Include="views\Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
     <Compile Include="view_models\VM_ControlPanel.cs" />
+    <Compile Include="view_models\VM_JoystickControl.cs" />
     <Compile Include="view_models\VM_Main.cs" />
     <Compile Include="view_models\VM_Map.cs" />
+    <Page Include="views\ControlPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="views\Joystick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\JoystickControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,21 +104,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="views\ControlPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="views\Joystick.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="views\JoystickControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="views\Map.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

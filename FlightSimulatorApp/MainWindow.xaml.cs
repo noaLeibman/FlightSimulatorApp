@@ -28,9 +28,10 @@ namespace FlightSimulatorApp
             InitializeComponent();
             DataContext = new
             {
-                (Application.Current as App).ViewModel.steers, 
-                (Application.Current as App).ViewModel.map, 
-                (Application.Current as App).ViewModel.cp, 
+                (Application.Current as App).ViewModel.steers,
+                (Application.Current as App).ViewModel.map,
+                (Application.Current as App).ViewModel.cp,
+          
             };
         }
     }

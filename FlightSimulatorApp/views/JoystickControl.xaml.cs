@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulatorApp.view_models;
 
 namespace FlightSimulatorApp.views
 {
@@ -23,10 +24,25 @@ namespace FlightSimulatorApp.views
 
         public JoystickControl()
         {
-
             InitializeComponent();
-            this.DataContext = new Joystick();
+           
+          
         }
+        private double rudder;
 
+        private double Rudder
+        {
+            get
+            {
+                return rudder;
+
+            }
+            set
+            {
+                rudder = value;
+                (Application.Current as App).ViewModel.steers.VM_Rudder = value;
+            }
+        }
+        
     }
 }
