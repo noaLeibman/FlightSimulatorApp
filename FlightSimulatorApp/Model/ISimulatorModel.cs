@@ -4,9 +4,9 @@ namespace FlightSimulatorApp.Model
 {
     public interface ISimulatorModel : INotifyPropertyChanged
     {
-        void connect(string ip, int port);
-        void disconnect();
-        void start();
+        void Connect(string ip, int port);
+        void Disconnect();
+        void Start();
         double HeadingDeg { get; set; }
         double VerticalSpeed { get; set; }
         double GroundSpeed { get; set; }

@@ -15,6 +15,8 @@ namespace FlightSimulatorApp
         {
             ISimulatorModel model = new SimulatorModel(new TelnetClient());
             ViewModel = new VM_Main(model);
+            model.Connect("127.0.0.1", 5402);
+            model.Start();
         }
     }
 }

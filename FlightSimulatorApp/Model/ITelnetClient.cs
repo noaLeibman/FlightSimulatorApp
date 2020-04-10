@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace FlightSimulatorApp.Model
 {
     public interface ITelnetClient
     {
-        void connect(string ip, int port);
-        void write(string command);
-        string read();
-        void disconnect();
+        Mutex MyMutex { get; set; }
+        void Connect(string ip, int port);
+        string Write(string command);
+        string Read();
+        void Disconnect();
     }
 }

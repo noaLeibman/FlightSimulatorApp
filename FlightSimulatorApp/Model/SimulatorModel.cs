@@ -11,6 +11,7 @@ namespace FlightSimulatorApp.Model
     public class SimulatorModel : ISimulatorModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private Mutex mutex;
         private ITelnetClient client;
         private volatile Boolean stop;
         //airplane values:
@@ -110,34 +111,36 @@ namespace FlightSimulatorApp.Model
         {
             this.client = client;
             this.stop = false;
+            this.mutex = new Mutex();
+            this.client.MyMutex = this.mutex;
         }
 
-        public void connect(string ip, int port)
+        public void Connect(string ip, int port)
         {
-            this.client.connect(ip, port);
+            this.client.Connect(ip, port);
         }
 
-        public void disconnect()
+        public void Disconnect()
         {
-            this.client.disconnect();
+            this.client.Disconnect();
         }
 
-        public void start()
+        public void Start()
         {
             new Thread(delegate ()
             {
                 while (!stop)
                 {
-                    this.client.write("get /instrumentation/heading-indicator/indicated-heading-deg\n");
-                    this.client.write("get /instrumentation/gps/indicated-vertical-speed\n");
-                    this.client.write("get /instrumentation/gps/indicated-ground-speed-kt\n");
-                    this.client.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
-                    this.client.write("get /instrumentation/gps/indicated-altitude-ft\n");
-                    this.client.write("get /instrumentation/attitude-indicator/internal-roll-deg\n");
-                    this.client.write("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
-                    this.client.write("get /instrumentation/altimeter/indicated-altitude-ft\n");
-                    this.client.write("get /position/latitude-deg\n");
-                    this.client.write("get /position/longitude-deg\n");
+                    this.headingDeg = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
+                    this.verticalSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-vertical-speed\n"));
+                    this.groundSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-ground-speed-kt\n"));
+                    this.airspeed = Double.Parse(this.client.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
+                    this.gpsAltitude = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-altitude-ft\n"));
+                    this.roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
+                    this.pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
+                    this.altimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
+                    this.latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
+                    this.longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
                 }
             }).Start();
         }
