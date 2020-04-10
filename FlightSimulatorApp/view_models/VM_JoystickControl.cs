@@ -25,17 +25,50 @@ namespace FlightSimulatorApp.view_models
             set
             {
                 VM_rudder = value;
+               
+                //function of model to send to server
+            }
+        }
+        private double VM_elevator;
+        public double VM_Elevator
+        {
+            get
+            {
+                return VM_elevator;
+            }
+            set
+            {
+                VM_elevator = value;
+                //function of model to send to server
+            }
+        }
+        private double VM_throttle;
+        public double VM_Throttle
+        {
+            get
+            {
+                return VM_throttle;
+            }
+            set
+            {
+                VM_throttle = value;
+                //function of model to send to server
+            }
+        }
+        private double VM_aileron;
+        public double VM_Aileron
+        {
+            get
+            {
+                return VM_aileron;
+            }
+            set
+            {
+                VM_aileron = value;
                 //function of model to send to server
             }
         }
 
- 
-
-
-        private void ThrottleChangedEvent(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
         public void SetModel(ISimulatorModel model)
         {
             this.model = model;
@@ -50,6 +83,4 @@ namespace FlightSimulatorApp.view_models
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
     }
-    
-  
 }
