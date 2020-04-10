@@ -25,6 +25,7 @@ namespace FlightSimulatorApp.Model
         private double altimeterAltitude = 7;
         private double latitude = 32.873331;
         private double longitude = 34.006333;
+        private string planePosition;
         //coresponding properties:
         public double Heading { 
             get { return this.headingDeg; }
@@ -47,7 +48,7 @@ namespace FlightSimulatorApp.Model
             set
             {
                 groundSpeed = value;
-                NotifyPropertyChanged("GroungSpeed");
+                NotifyPropertyChanged("GroundSpeed");
             }
         }
         public double Airspeed { 
@@ -107,6 +108,16 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        public string PlanePosition
+        {
+            get { return this.planePosition; }
+            set
+            {
+                planePosition = value;
+                NotifyPropertyChanged("PlanePosition");
+            }
+        }
+
         public SimulatorModel(TelnetClient client)
         {
             this.client = client;
@@ -141,6 +152,7 @@ namespace FlightSimulatorApp.Model
                     this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
                     this.Latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
                     this.Longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
+                    this.PlanePosition = this.Latitude.ToString() + ", " + this.Longitude.ToString();
                 }
             }).Start();
         }
