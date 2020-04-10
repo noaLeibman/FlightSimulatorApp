@@ -25,5 +25,11 @@ namespace FlightSimulatorApp.view_models
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged(string name)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
     }
 }

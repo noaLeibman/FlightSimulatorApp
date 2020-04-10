@@ -11,7 +11,7 @@
         <m:Map x:Name="MyMap" CredentialsProvider="Ar61DlYtoDhXelcCPx4SdjSn1UsDH_whJ33OjYB3hiYIhHhX5EA2oTzp182RY89m"
                Center="32.006333, 34.873331" ZoomLevel="13" >
             <Canvas x:Name="airplaneIcon" Width="50" Height="80"
-              m:MapLayer.Position="32.008333, 34.873331" Opacity="1" >
+              m:MapLayer.Position="{Binding Path=PlanePosition}" Opacity="1" >
                 <Image Source="airplane4.png" Width="50" Height="80" />
             </Canvas>
         </m:Map>
