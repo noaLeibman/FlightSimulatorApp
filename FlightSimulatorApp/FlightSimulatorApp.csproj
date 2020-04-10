@@ -61,7 +61,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ISimulatorModel.cs" />
+    <Compile Include="Model\ITelnetClient.cs" />
     <Compile Include="Model\SimulatorModel.cs" />
+    <Compile Include="Model\TelnetClient.cs" />
     <Compile Include="views\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
     </Compile>
