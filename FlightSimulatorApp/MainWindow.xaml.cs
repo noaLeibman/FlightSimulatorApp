@@ -32,6 +32,8 @@ namespace FlightSimulatorApp
                 viewModel.steers,
                 viewModel.map,
                 viewModel.cp,
+          
+
             };
         }
     }
