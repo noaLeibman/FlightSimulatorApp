@@ -7,7 +7,7 @@ namespace FlightSimulatorApp.Model
         void Connect(string ip, int port);
         void Disconnect();
         void Start();
-        double HeadingDeg { get; set; }
+        double Heading { get; set; }
         double VerticalSpeed { get; set; }
         double GroundSpeed { get; set; }
         double Airspeed { get; set; }

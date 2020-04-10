@@ -10,14 +10,14 @@ namespace FlightSimulatorApp.view_models
     public class VM_ControlPanel : INotifyPropertyChanged
 
     {
-        public string VM_heading { get { return this.model.HeadingDeg.ToString(); } }
-        public string VM_verticalSpeed { get { return this.model.VerticalSpeed.ToString(); } }
-        public string VM_groundSpeed { get { return this.model.GroundSpeed.ToString(); } }
-        public string VM_airspeed { get { return this.model.Airspeed.ToString(); } }
-        public string VM_gpsAltitude { get { return this.model.GpsAltitude.ToString(); } }
-        public string VM_roll { get { return this.model.Roll.ToString(); } }
-        public string VM_pitch { get { return this.model.Pitch.ToString(); } }
-        public string VM_altimeterAltitude { get { return this.model.AltimeterAltitude.ToString(); } }
+        public string VM_Heading { get { return this.model.Heading.ToString(); } }
+        public string VM_VerticalSpeed { get { return this.model.VerticalSpeed.ToString(); } }
+        public string VM_GroundSpeed { get { return this.model.GroundSpeed.ToString(); } }
+        public string VM_Airspeed { get { return this.model.Airspeed.ToString(); } }
+        public string VM_GpsAltitude { get { return this.model.GpsAltitude.ToString(); } }
+        public string VM_Roll { get { return this.model.Roll.ToString(); } }
+        public string VM_Pitch { get { return this.model.Pitch.ToString(); } }
+        public string VM_AltimeterAltitude { get { return this.model.AltimeterAltitude.ToString(); } }
 
         private ISimulatorModel model;
         public void SetModel(ISimulatorModel model)

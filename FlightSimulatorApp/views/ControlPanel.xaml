@@ -24,14 +24,14 @@
                 <ListBoxItem>altimeter altitude</ListBoxItem>
             </ListBox>
             <ListBox Grid.Column="1" Margin="30,0,-148,-0.4">
-                <ListBoxItem Content="{Binding Path=cp.VM_heading}"/>
-                <ListBoxItem Content="{Binding Path=cp.VM_verticalSpeed}"/>
-                <ListBoxItem Content="{Binding Path=cp.VM_groundSpeed}"/>
-                <ListBoxItem Content="{Binding Path=cp.VM_airspeed}"/>
-                <ListBoxItem Content="{Binding Path=cp.VM_gpsAltitude}"/>
-                <ListBoxItem Content="{Binding Path=cp.VM_roll}"/>
-                <ListBoxItem Content="{Binding Path=cp.VM_pitch}"/>
-                <ListBoxItem Content="{Binding Path=cp.VM_altimeterAltitude}"/>
+                <ListBoxItem Content="{Binding cp.VM_Heading, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBoxItem Content="{Binding cp.VM_VerticalSpeed, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBoxItem Content="{Binding cp.VM_GroundSpeed, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBoxItem Content="{Binding cp.VM_Airspeed, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBoxItem Content="{Binding cp.VM_GpsAltitude, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBoxItem Content="{Binding cp.VM_Roll, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBoxItem Content="{Binding cp.VM_Pitch, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBoxItem Content="{Binding cp.VM_AltimeterAltitude, UpdateSourceTrigger=PropertyChanged}"/>
             </ListBox>
         </Grid>
     </StackPanel>

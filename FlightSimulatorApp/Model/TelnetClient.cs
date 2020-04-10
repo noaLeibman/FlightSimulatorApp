@@ -27,22 +27,22 @@ namespace FlightSimulatorApp.Model
         public string Write(string command)
         {
             MyMutex.WaitOne();
-            Console.WriteLine(command);
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
             stream.Write(data, 0, data.Length);
             string answer = Read();
-            Console.WriteLine(answer);
             MyMutex.ReleaseMutex();
             return answer;
         }
         public string Read()
         {
+            MyMutex.WaitOne();
+            Byte[] data = new Byte[256];
             String responseData = String.Empty;
-            Byte[] readdata = new Byte[256];
-            Int32 bytes = stream.Read(readdata, 0, readdata.Length);
-            responseData = System.Text.Encoding.ASCII.GetString(readdata, 0, bytes);
-            string result = System.Text.Encoding.ASCII.GetString(readdata);
-            return result;
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+            MyMutex.ReleaseMutex();
+            return responseData;
+
         }
         public void Disconnect()
         {

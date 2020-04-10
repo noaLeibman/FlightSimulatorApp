@@ -26,13 +26,13 @@ namespace FlightSimulatorApp
         VM_Main viewModel = (Application.Current as App).ViewModel;
         public MainWindow()
         {
+            VM_JoystickControl steers = viewModel.steers;
+            VM_Map map = viewModel.map;
+            VM_ControlPanel cp = viewModel.cp;
             InitializeComponent();
             DataContext = new
             {
-                viewModel.steers,
-                viewModel.map,
-                viewModel.cp,
-          
+                steers, map, cp
             };
         }
     }

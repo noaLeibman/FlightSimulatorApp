@@ -26,84 +26,84 @@ namespace FlightSimulatorApp.Model
         private double latitude = 32.873331;
         private double longitude = 34.006333;
         //coresponding properties:
-        public double HeadingDeg { 
+        public double Heading { 
             get { return this.headingDeg; }
             set 
             {
                 headingDeg = value;
-                NotifyPropertyChanged("headingDeg");
+                NotifyPropertyChanged("Heading");
             }
         }
         public double VerticalSpeed { 
             get { return this.verticalSpeed; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("verticalSpeed");
+                verticalSpeed = value;
+                NotifyPropertyChanged("VerticalSpeed");
             }
         }
         public double GroundSpeed { 
             get { return this.groundSpeed; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("groungSpeed");
+                groundSpeed = value;
+                NotifyPropertyChanged("GroungSpeed");
             }
         }
         public double Airspeed { 
             get { return this.airspeed; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("airspeed");
+                airspeed = value;
+                NotifyPropertyChanged("Airspeed");
             }
         }
         public double GpsAltitude {
             get { return this.gpsAltitude; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("gpsAltitude");
+                gpsAltitude = value;
+                NotifyPropertyChanged("GpsAltitude");
             }
         }
         public double Roll { 
             get { return this.roll; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("roll");
+                roll = value;
+                NotifyPropertyChanged("Roll");
             }
         }
         public double Pitch { 
             get { return this.pitch; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("pitch");
+                pitch = value;
+                NotifyPropertyChanged("Pitch");
             }
         }
         public double AltimeterAltitude { 
             get { return this.altimeterAltitude; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("altimeterAltitude");
+                altimeterAltitude = value;
+                NotifyPropertyChanged("AltimeterAltitude");
             }
         }
         public double Latitude { 
             get { return this.latitude; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("latitude");
+                latitude = value;
+                NotifyPropertyChanged("Latitude");
             }
         }
         public double Longitude { 
             get { return this.longitude; }
             set
             {
-                headingDeg = value;
-                NotifyPropertyChanged("longitude");
+                longitude = value;
+                NotifyPropertyChanged("Longitude");
             }
         }
 
@@ -131,16 +131,16 @@ namespace FlightSimulatorApp.Model
             {
                 while (!stop)
                 {
-                    this.headingDeg = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
-                    this.verticalSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-vertical-speed\n"));
-                    this.groundSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-ground-speed-kt\n"));
-                    this.airspeed = Double.Parse(this.client.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
-                    this.gpsAltitude = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-altitude-ft\n"));
-                    this.roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
-                    this.pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
-                    this.altimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
-                    this.latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
-                    this.longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
+                    this.Heading = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
+                    this.VerticalSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-vertical-speed\n"));
+                    this.GroundSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-ground-speed-kt\n"));
+                    this.Airspeed = Double.Parse(this.client.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
+                    this.GpsAltitude = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-altitude-ft\n"));
+                    this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
+                    this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
+                    this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
+                    this.Latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
+                    this.Longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
                 }
             }).Start();
         }

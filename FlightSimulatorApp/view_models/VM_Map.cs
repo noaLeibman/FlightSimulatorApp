@@ -29,7 +29,8 @@ namespace FlightSimulatorApp.view_models
             {
                 string position = this.VM_Latitude.ToString() + ", " + this.VM_Longitude.ToString();
                 Console.WriteLine(position);
-                return position; 
+                //return "32.006333, 34.873331"; 
+                return position;
             }
         }
 
