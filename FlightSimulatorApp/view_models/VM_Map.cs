@@ -15,11 +15,11 @@ namespace FlightSimulatorApp.view_models
         }
         public double VM_Longitude
         {
-            get { return this.model.Longitude; } 
+            get { return this.model.Longitude; }
         }
         public string VM_PlanePosition 
         { 
-            get 
+            get
             {
                 string position = this.model.PlanePosition;
                 Console.WriteLine(position);
@@ -43,6 +43,5 @@ namespace FlightSimulatorApp.view_models
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-
     }
 }
