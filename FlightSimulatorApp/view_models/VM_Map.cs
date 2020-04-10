@@ -8,24 +8,18 @@ namespace FlightSimulatorApp.view_models
     public class VM_Map : INotifyPropertyChanged
     {
         private ISimulatorModel model;
-        public VM_Map()
+
+        public double VM_Latitude
         {
-            this.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-            {
-                this.update(e.PropertyName);
-            };
-        }
-        public double VM_Latitude 
-        { 
             get { return this.model.Latitude; }
         }
         public double VM_Longitude
         {
-            get { return this.model.Longitude; } 
+            get { return this.model.Longitude; }
         }
-        public string PlanePosition 
-        { 
-            get 
+        public string PlanePosition
+        {
+            get
             {
                 string position = this.VM_Latitude.ToString() + ", " + this.VM_Longitude.ToString();
                 Console.WriteLine(position);
@@ -49,14 +43,6 @@ namespace FlightSimulatorApp.view_models
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
-        }
-
-        private void update(string name)
-        {
-            if (name == "Latitude")
-            {
-               
-            }
         }
     }
 }

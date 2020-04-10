@@ -26,15 +26,17 @@ namespace FlightSimulatorApp.Model
         private double latitude = 32.873331;
         private double longitude = 34.006333;
         //coresponding properties:
-        public double Heading { 
+        public double Heading
+        {
             get { return this.headingDeg; }
-            set 
+            set
             {
                 headingDeg = value;
                 NotifyPropertyChanged("Heading");
             }
         }
-        public double VerticalSpeed { 
+        public double VerticalSpeed
+        {
             get { return this.verticalSpeed; }
             set
             {
@@ -42,15 +44,17 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("VerticalSpeed");
             }
         }
-        public double GroundSpeed { 
+        public double GroundSpeed
+        {
             get { return this.groundSpeed; }
             set
             {
                 groundSpeed = value;
-                NotifyPropertyChanged("GroungSpeed");
+                NotifyPropertyChanged("GroundSpeed");
             }
         }
-        public double Airspeed { 
+        public double Airspeed
+        {
             get { return this.airspeed; }
             set
             {
@@ -58,7 +62,8 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("Airspeed");
             }
         }
-        public double GpsAltitude {
+        public double GpsAltitude
+        {
             get { return this.gpsAltitude; }
             set
             {
@@ -66,7 +71,8 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("GpsAltitude");
             }
         }
-        public double Roll { 
+        public double Roll
+        {
             get { return this.roll; }
             set
             {
@@ -74,7 +80,8 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("Roll");
             }
         }
-        public double Pitch { 
+        public double Pitch
+        {
             get { return this.pitch; }
             set
             {
@@ -82,7 +89,8 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("Pitch");
             }
         }
-        public double AltimeterAltitude { 
+        public double AltimeterAltitude
+        {
             get { return this.altimeterAltitude; }
             set
             {
@@ -90,7 +98,8 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("AltimeterAltitude");
             }
         }
-        public double Latitude { 
+        public double Latitude
+        {
             get { return this.latitude; }
             set
             {
@@ -98,7 +107,8 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("Latitude");
             }
         }
-        public double Longitude { 
+        public double Longitude
+        {
             get { return this.longitude; }
             set
             {

@@ -32,7 +32,9 @@ namespace FlightSimulatorApp
             InitializeComponent();
             DataContext = new
             {
-                steers, map, cp
+                steers,
+                map,
+                cp
             };
         }
     }
