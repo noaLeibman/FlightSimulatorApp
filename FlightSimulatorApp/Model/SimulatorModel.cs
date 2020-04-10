@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.Model
 {
-    class SimulatorModel : ISimulatorModel
+    public class SimulatorModel : ISimulatorModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ITelnetClient client;
         private volatile Boolean stop;
         //airplane values:
-        private double headingDeg;
-        private double verticalSpeed;
-        private double groundSpeed;
-        private double airspeed;
-        private double gpsAltitude;
-        private double roll;
-        private double pitch;
-        private double altimeterAltitude;
-        private double latitude;
-        private double longitude;
+        private double headingDeg = 0;
+        private double verticalSpeed = 1;
+        private double groundSpeed = 2;
+        private double airspeed = 3;
+        private double gpsAltitude = 4;
+        private double roll = 5;
+        private double pitch = 6;
+        private double altimeterAltitude = 7;
+        private double latitude = 32.873331;
+        private double longitude = 34.006333;
         //coresponding properties:
         public double HeadingDeg { 
             get { return this.headingDeg; }

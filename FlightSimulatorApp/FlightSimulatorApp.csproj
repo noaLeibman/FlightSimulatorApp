@@ -60,8 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\INotifyPropertyChanged.cs" />
+    <Compile Include="Model\ISimulatorModel.cs" />
     <Compile Include="Model\ITelnetClient.cs" />
+    <Compile Include="Model\SimulatorModel.cs" />
     <Compile Include="Model\TelnetClient.cs" />
     <Compile Include="views\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
@@ -76,6 +77,7 @@
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
     <Compile Include="view_models\VM_ControlPanel.cs" />
+    <Compile Include="view_models\VM_JoystickControl.cs" />
     <Compile Include="view_models\VM_Main.cs" />
     <Compile Include="view_models\VM_Map.cs" />
     <Page Include="MainWindow.xaml">

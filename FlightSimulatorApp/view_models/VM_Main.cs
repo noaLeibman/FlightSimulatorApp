@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace FlightSimulatorApp.view_models
 {
-    class VM_Main : INotifyPropertyChanged
+    public class VM_Main : INotifyPropertyChanged
     {
         public VM_Map map;
         public VM_ControlPanel cp;
@@ -21,6 +21,7 @@ namespace FlightSimulatorApp.view_models
             this.map = new VM_Map();
             this.map.SetModel(model);
             this.cp = new VM_ControlPanel();
+            this.cp.SetModel(model);
             this.steers = new VM_JoystickControl();
         }
 

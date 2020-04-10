@@ -12,5 +12,7 @@ namespace FlightSimulatorApp.views
         {
             InitializeComponent();
         }
+
+
     }
 }

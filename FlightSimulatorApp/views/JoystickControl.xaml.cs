@@ -23,7 +23,6 @@ namespace FlightSimulatorApp.views
 
         public JoystickControl()
         {
-
             InitializeComponent();
             this.DataContext = new Joystick();
         }

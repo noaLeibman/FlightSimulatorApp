@@ -9,7 +9,7 @@ using FlightSimulatorApp.views;
 
 namespace FlightSimulatorApp.view_models
 {
-    class VM_JoystickControl : INotifyPropertyChanged
+    public class VM_JoystickControl : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

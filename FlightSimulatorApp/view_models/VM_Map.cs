@@ -4,11 +4,17 @@ using FlightSimulatorApp.Model;
 
 namespace FlightSimulatorApp.view_models
 {
-    class VM_Map : INotifyPropertyChanged
+    public class VM_Map : INotifyPropertyChanged
     {
         private ISimulatorModel model;
-        public double VM_Latitude { get; set; } = 32.006333;
-        public double VM_Longitute { get; set; } = 34.873331;
+        public double VM_Latitude 
+        { 
+            get { return this.model.Latitude; }
+        }
+        public double VM_Longitute
+        {
+            get { return this.model.Longitude; } 
+        }
         public string PlanePosition 
         { 
             get { return this.VM_Latitude.ToString() + ", " + this.VM_Latitude.ToString(); }
