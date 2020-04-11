@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulatorApp.view_models;
 
 namespace FlightSimulatorApp.views
 {
@@ -23,6 +24,16 @@ namespace FlightSimulatorApp.views
         public ConnectComponent()
         {
             InitializeComponent();
+        }
+
+        private void IPInput(object sender, TextCompositionEventArgs e)
+        {
+            //connect.VM_IP = e.text;
+        }
+
+        private void PortInput(object sender, TextCompositionEventArgs e)
+        {
+            //connect.VM_Port = e.text;
         }
     }
 }
