@@ -25,7 +25,8 @@ namespace FlightSimulatorApp.view_models
             set
             {
                 VM_rudder = value;
-               
+                model.Write("set /controls/flight/rudder " + VM_rudder.ToString() + "\n");
+              
                 //function of model to send to server
             }
         }
@@ -38,8 +39,9 @@ namespace FlightSimulatorApp.view_models
             }
             set
             {
+                model.Write("set / controls / flight / elevator " + VM_elevator.ToString() + "\n"); 
                 VM_elevator = value;
-                //function of model to send to server
+           
             }
         }
         private double VM_throttle;
@@ -52,7 +54,7 @@ namespace FlightSimulatorApp.view_models
             set
             {
                 VM_throttle = value;
-                //function of model to send to server
+                model.Write("set / controls / engines / current - engine / throttle " + VM_throttle.ToString() + "\n");
             }
         }
         private double VM_aileron;
@@ -65,22 +67,22 @@ namespace FlightSimulatorApp.view_models
             set
             {
                 VM_aileron = value;
+                model.Write("set / controls / flight / aileron " + VM_aileron.ToString() + "\n");
                 //function of model to send to server
             }
         }
 
-        public void SetModel(ISimulatorModel model)
-        {
-            this.model = model;
-            model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-            {
-                NotifyPropertyChanged("VM_" + e.PropertyName);
-            };
-        }
+
         public void NotifyPropertyChanged(string name)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
+        public void SetModel(ISimulatorModel model)
+        {
+            this.model = model;
+
+        }
+
     }
 }

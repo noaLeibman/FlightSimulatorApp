@@ -23,6 +23,7 @@ namespace FlightSimulatorApp.view_models
             this.cp = new VM_ControlPanel();
             this.cp.SetModel(model);
             this.steers = new VM_JoystickControl();
+            this.steers.SetModel(model);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
