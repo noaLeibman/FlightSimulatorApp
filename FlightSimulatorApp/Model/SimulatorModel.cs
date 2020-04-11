@@ -5,14 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using FlightSimulatorApp.view_models;
 
 namespace FlightSimulatorApp.Model
 {
     public class SimulatorModel : ISimulatorModel
     {
+        public VM_JoystickControl joystickVM;
         public event PropertyChangedEventHandler PropertyChanged;
         private Mutex mutex;
-        private ITelnetClient client;
+        public ITelnetClient client;
         private volatile Boolean stop;
         //airplane values:
         private double headingDeg = 0;
@@ -118,10 +120,7 @@ namespace FlightSimulatorApp.Model
             }
         }
 
-        public double Rudder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Throttel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Elevator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Aileron { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
 
         public string PlanePosition
         {
@@ -175,6 +174,11 @@ namespace FlightSimulatorApp.Model
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+        public string Write(string command)
+        {
+           string str= client.Write(command);
+            return str;
         }
     }
 }

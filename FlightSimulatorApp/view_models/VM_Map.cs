@@ -8,21 +8,20 @@ namespace FlightSimulatorApp.view_models
     public class VM_Map : INotifyPropertyChanged
     {
         private ISimulatorModel model;
-     
-        public double VM_Latitude 
-        { 
+
+        public double VM_Latitude
+        {
             get { return this.model.Latitude; }
         }
         public double VM_Longitude
         {
             get { return this.model.Longitude; }
         }
-        public string VM_PlanePosition 
-        { 
+        public string VM_PlanePosition
+        {
             get
             {
                 string position = this.model.PlanePosition;
-                Console.WriteLine(position);
                 return position;
             }
         }
