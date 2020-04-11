@@ -107,6 +107,11 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        public double Rudder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Throttel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Elevator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double Aileron { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public SimulatorModel(TelnetClient client)
         {
             this.client = client;

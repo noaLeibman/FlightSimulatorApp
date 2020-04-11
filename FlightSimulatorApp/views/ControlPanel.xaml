@@ -13,7 +13,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Column="0" Margin="0,0,9.8,-0.4">
+            <ListBox Grid.Column="0" Margin="0,0,9.8,-0.4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <ListBoxItem>heading</ListBoxItem>
                 <ListBoxItem>vertical speed</ListBoxItem>
                 <ListBoxItem>ground speed</ListBoxItem>
@@ -23,7 +23,7 @@
                 <ListBoxItem>pitch</ListBoxItem>
                 <ListBoxItem>altimeter altitude</ListBoxItem>
             </ListBox>
-            <ListBox Grid.Column="1" Margin="30,0,-148,-0.4">
+            <ListBox Grid.Column="1" Margin="30,0,-148,-0.4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <ListBoxItem Content="{Binding cp.VM_Heading, UpdateSourceTrigger=PropertyChanged}"/>
                 <ListBoxItem Content="{Binding cp.VM_VerticalSpeed, UpdateSourceTrigger=PropertyChanged}"/>
                 <ListBoxItem Content="{Binding cp.VM_GroundSpeed, UpdateSourceTrigger=PropertyChanged}"/>
