@@ -21,5 +21,6 @@ namespace FlightSimulatorApp.Model
         double Throttel { get; set; }
         double Elevator { get; set; }
         double Aileron { get; set; }
+        string PlanePosition { get; set; }
     }
 }

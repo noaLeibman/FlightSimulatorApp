@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulatorApp.view_models;
 
 namespace FlightSimulatorApp.views
 {
     /// <summary>
     /// Interaction logic for ControlPanel.xaml
     /// </summary>
-    public partial class ControlPanel : UserControl
+    public partial class ControlPanel : UserControl, INotifyPropertyChanged
     {
         public ControlPanel()
         {
             InitializeComponent();
+
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

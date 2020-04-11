@@ -24,18 +24,14 @@ namespace FlightSimulatorApp.views
 
         public JoystickControl()
         {
-            InitializeComponent();
-           
-          
+            InitializeComponent();          
         }
         private double rudder;
-
-        private double Rudder
+        public double Rudder
         {
             get
             {
                 return rudder;
-
             }
             set
             {
@@ -43,6 +39,36 @@ namespace FlightSimulatorApp.views
                 (Application.Current as App).ViewModel.steers.VM_Rudder = value;
             }
         }
-        
+        private double elevator;
+        public double Elevator
+        {
+            get
+            {
+                return elevator;
+            }
+            set
+            {
+                elevator = value;
+                (Application.Current as App).ViewModel.steers.VM_Elevator = value;
+            }
+        }
+        private double throttle;
+       
+        private void Throttle_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            throttle = e.NewValue;
+            (Application.Current as App).ViewModel.steers.VM_Throttle = throttle;
+        }
+
+        private double aileron;
+
+        private void Aileron_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            aileron = e.NewValue;
+            (Application.Current as App).ViewModel.steers.VM_Aileron = aileron;
+        }
+
+
+
     }
 }
