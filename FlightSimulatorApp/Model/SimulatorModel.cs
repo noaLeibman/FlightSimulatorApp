@@ -15,7 +15,8 @@ namespace FlightSimulatorApp.Model
         public event PropertyChangedEventHandler PropertyChanged;
         private Mutex mutex;
         public ITelnetClient client;
-        private volatile Boolean stop;
+        private volatile Boolean stop = true;
+        private volatile Boolean connected = false;
         //airplane values:
         private double headingDeg = 0;
         private double verticalSpeed = 1;
@@ -120,8 +121,6 @@ namespace FlightSimulatorApp.Model
             }
         }
 
-
-
         public string PlanePosition
         {
             get { return this.planePosition; }
@@ -134,19 +133,26 @@ namespace FlightSimulatorApp.Model
         public SimulatorModel(TelnetClient client)
         {
             this.client = client;
-            this.stop = false;
             this.mutex = new Mutex();
             this.client.MyMutex = this.mutex;
         }
 
         public void Connect(string ip, int port)
         {
-            this.client.Connect(ip, port);
+            if (!connected)
+            {
+                this.client.Connect(ip, port);
+                this.connected = true;
+            }
+            this.stop = false;
+            this.Start();
         }
 
         public void Disconnect()
         {
+            this.stop = true;
             this.client.Disconnect();
+            this.connected = false;
         }
 
         public void Start()
@@ -177,7 +183,11 @@ namespace FlightSimulatorApp.Model
         }
         public string Write(string command)
         {
-           string str= client.Write(command);
+            string str = null;
+            if (connected)
+            {
+                str = client.Write(command);
+            } 
             return str;
         }
     }

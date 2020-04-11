@@ -9,11 +9,12 @@ using System.ComponentModel;
 
 namespace FlightSimulatorApp.view_models
 {
-    public class VM_Main : INotifyPropertyChanged
+    public class VM_Main
     {
         public VM_Map map;
         public VM_ControlPanel cp;
         public VM_JoystickControl steers;
+        public VM_Connect connect;
         private ISimulatorModel model;
         public VM_Main(ISimulatorModel model)
         {
@@ -24,8 +25,9 @@ namespace FlightSimulatorApp.view_models
             this.cp.SetModel(model);
             this.steers = new VM_JoystickControl();
             this.steers.SetModel(model);
+            this.connect = new VM_Connect();
+            this.connect.SetModel(model);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -22,6 +22,7 @@ namespace FlightSimulatorApp.view_models
             get
             {
                 string position = this.model.PlanePosition;
+                Console.WriteLine(position);
                 return position;
             }
         }

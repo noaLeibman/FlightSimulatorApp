@@ -20,14 +20,12 @@ namespace FlightSimulatorApp.views
     /// <summary>
     /// Interaction logic for ControlPanel.xaml
     /// </summary>
-    public partial class ControlPanel : UserControl, INotifyPropertyChanged
+    public partial class ControlPanel : UserControl
     {
         public ControlPanel()
         {
             InitializeComponent();
 
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

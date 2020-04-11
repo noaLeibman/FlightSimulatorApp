@@ -39,7 +39,7 @@ namespace FlightSimulatorApp.view_models
             }
             set
             {
-                model.Write("set / controls / flight / elevator " + VM_elevator.ToString() + "\n"); 
+                model.Write("set /controls/flight/elevator " + VM_elevator.ToString() + "\n"); 
                 VM_elevator = value;
            
             }
@@ -54,7 +54,7 @@ namespace FlightSimulatorApp.view_models
             set
             {
                 VM_throttle = value;
-                model.Write("set / controls / engines / current - engine / throttle " + VM_throttle.ToString() + "\n");
+                model.Write("set /controls/engines/current-engine/throttle " + VM_throttle.ToString() + "\n");
             }
         }
         private double VM_aileron;
@@ -67,7 +67,7 @@ namespace FlightSimulatorApp.view_models
             set
             {
                 VM_aileron = value;
-                model.Write("set / controls / flight / aileron " + VM_aileron.ToString() + "\n");
+                model.Write("set /controls/flight/aileron " + VM_aileron.ToString() + "\n");
                 //function of model to send to server
             }
         }

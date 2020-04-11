@@ -28,12 +28,30 @@ namespace FlightSimulatorApp.views
 
         private void IPInput(object sender, TextCompositionEventArgs e)
         {
-            //connect.VM_IP = e.text;
+            (Application.Current as App).ViewModel.connect.VM_IP = e.Text;
         }
 
         private void PortInput(object sender, TextCompositionEventArgs e)
         {
-            //connect.VM_Port = e.text;
+            Console.WriteLine(e.Text);
+            try
+            {
+                (Application.Current as App).ViewModel.connect.VM_Port = Int32.Parse(e.Text);
+            }
+            catch (Exception exp)
+            {
+                //print to error screen
+            }
+        }
+
+        private void ClickButton(object sender, RoutedEventArgs e)
+        {
+            if (userIP.Text != "" && userPort.Text != "")
+            {
+                (Application.Current as App).ViewModel.connect.VM_IP = userIP.Text;
+                (Application.Current as App).ViewModel.connect.VM_Port = Int32.Parse(userPort.Text);
+            }
+            (Application.Current as App).ViewModel.connect.Connect();
         }
     }
 }

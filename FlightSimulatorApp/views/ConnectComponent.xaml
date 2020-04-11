@@ -16,11 +16,11 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Label Content="IP:" Grid.Column="0" FontSize="16" HorizontalAlignment="Center"/>
-        <TextBox x:Name="userIP" Grid.Column="1" FontSize="16" TextInput="IPInput" />
+        <TextBox x:Name="userIP" Grid.Column="1" FontSize="16" TextInput="IPInput"/>
         <Label Content="Port:" Grid.Column="2" FontSize="16" HorizontalAlignment="Center"/>
         <TextBox x:Name="userPort" Grid.Column="3" FontSize="16" TextInput="PortInput"/>
         <Button Content="Connect" Grid.Column="5" FontSize="18" Background="#FF8B918B" BorderBrush="#FF090905" Foreground="#FF120F0F" 
-                FontWeight="Bold" FontFamily="Consolas" ClickMode="Press">
+                FontWeight="Bold" FontFamily="Consolas" Click="ClickButton" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>

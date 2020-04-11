@@ -29,12 +29,14 @@ namespace FlightSimulatorApp
             VM_JoystickControl steers = viewModel.steers;
             VM_Map map = viewModel.map;
             VM_ControlPanel cp = viewModel.cp;
+            VM_Connect connect = viewModel.connect;
             InitializeComponent();
             DataContext = new
             {
                 steers,
                 map,
-                cp
+                cp,
+                connect
             };
         }
     }
