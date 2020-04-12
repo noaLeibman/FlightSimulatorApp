@@ -192,18 +192,30 @@ namespace FlightSimulatorApp.Model
             {
                 while (!stop)
                 {
-                    
-                    this.Latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
-                    this.Longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
-                    this.Heading = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
-                    this.VerticalSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-vertical-speed\n"));
-                    this.GroundSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-ground-speed-kt\n"));
-                    this.Airspeed = Double.Parse(this.client.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
-                    this.GpsAltitude = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-altitude-ft\n"));
-                    this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
-                    this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
-                    this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
-                    //Thread.Sleep(250);
+                    try
+                    {
+                        this.Latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
+                        this.Longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
+                        this.Heading = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
+                        this.VerticalSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-vertical-speed\n"));
+                        this.GroundSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-ground-speed-kt\n"));
+                        this.Airspeed = Double.Parse(this.client.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
+                        this.GpsAltitude = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-altitude-ft\n"));
+                        this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
+                        this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
+                        this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
+                        Double.Parse("ERR");
+                        Thread.Sleep(250);
+                    } catch (Exception e)
+                    {
+                        if (e.Message == "Input string was not in a correct format.")
+                        {
+                            this.Message = "Server returned 'ERR'";
+                        } else
+                        {
+                            this.Message = "Seems like server is down:(";
+                        }
+                    }
                 }
             }).Start();
         }
@@ -219,6 +231,10 @@ namespace FlightSimulatorApp.Model
             if (connected)
             {
                 str = client.Write(command);
+                if (str == "ERR")
+                {
+                    this.Message = "Server returned 'ERR'";
+                }
             }
             return str;
         }
