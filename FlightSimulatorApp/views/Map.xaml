@@ -12,7 +12,16 @@
             <Grid>
                 <Rectangle Width="24" Height="24">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="D:\Repo\Advanced1\Advanced1\airplane4.png"/>
+                        <ImageBrush ImageSource="C:\Users\noale\Desktop\AdvancedProgramming2\FlightSimulator\FlightSimulatorApp\airplane4.png">
+                            <ImageBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="{Binding cp.VM_Heading, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ImageBrush.RelativeTransform>
+                        </ImageBrush>
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>

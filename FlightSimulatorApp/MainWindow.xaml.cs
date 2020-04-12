@@ -30,13 +30,15 @@ namespace FlightSimulatorApp
             VM_Map map = viewModel.map;
             VM_ControlPanel cp = viewModel.cp;
             VM_Connect connect = viewModel.connect;
+            VM_ErrorLine errorLine = viewModel.errorLine;
             InitializeComponent();
             DataContext = new
             {
                 steers,
                 map,
                 cp,
-                connect
+                connect,
+                errorLine
             };
         }
     }

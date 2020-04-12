@@ -15,6 +15,7 @@ namespace FlightSimulatorApp.view_models
         public VM_ControlPanel cp;
         public VM_JoystickControl steers;
         public VM_Connect connect;
+        public VM_ErrorLine errorLine;
         private ISimulatorModel model;
         public VM_Main(ISimulatorModel model)
         {
@@ -27,6 +28,7 @@ namespace FlightSimulatorApp.view_models
             this.steers.SetModel(model);
             this.connect = new VM_Connect();
             this.connect.SetModel(model);
+            this.errorLine = new VM_ErrorLine();
         }
 
     }

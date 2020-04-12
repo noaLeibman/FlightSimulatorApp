@@ -29,6 +29,7 @@ namespace FlightSimulatorApp.Model
         private double latitude = 32.8733;
         private double longitude = 34.0063;
         private string planePosition;
+        private string message;
         //coresponding properties:
         public double Heading
         {
@@ -125,6 +126,15 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("PlanePosition");
             }
         }
+        public string Message
+        {
+            get { return this.message; }
+            set
+            {
+                this.message = value;
+                NotifyPropertyChanged("Message");
+            }
+        }
         public SimulatorModel(TelnetClient client)
         {
             this.client = client;
@@ -167,8 +177,7 @@ namespace FlightSimulatorApp.Model
                     this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
                     this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
                     this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
-
-         //           this.PlanePosition = this.Latitude.ToString() + ", " + this.Longitude.ToString();
+                    Thread.Sleep(250);
                 }
             }).Start();
         }
