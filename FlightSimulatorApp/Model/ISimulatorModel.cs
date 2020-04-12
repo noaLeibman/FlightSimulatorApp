@@ -17,7 +17,6 @@ namespace FlightSimulatorApp.Model
         double AltimeterAltitude { get; set; }
         double Latitude { get; set; }
         double Longitude { get; set; }
-     //   string PlanePosition { get; set; }
         string Write(string command);
 
 

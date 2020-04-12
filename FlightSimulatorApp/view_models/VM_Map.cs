@@ -10,34 +10,33 @@ namespace FlightSimulatorApp.view_models
     {
 
   
-        public double VM_Latitude
-
-        { get 
-
-            {
-                return this.model.Latitude ; }
-        }
-
-
-        public double VM_Longitude
-        { 
-            get 
-            { 
-
-                return this.model.Longitude; } 
-        }
+     //   public double VM_Latitude
+  //      { get 
+   //         {
+   //             VM_PlanePosition = new Location(this.model.Latitude, this.model.Longitude);
+   //             return this.model.Latitude ; }
+   //     }
+  //      public double VM_Longitude
+   //     { 
+   //         get 
+   //         {
+                
+   //             return this.model.Longitude; } 
+  //      }
         private Location VM_planeposition;
         public Location VM_PlanePosition
         {
+            get
+            {
+                VM_planeposition = new Location(this.model.Latitude, this.model.Longitude);
+                Console.WriteLine("in VM"+VM_planeposition);
+                return VM_planeposition;
+
+            }
             set
             {
                 VM_planeposition = value;
-            }
-            get
-            {
-                Console.WriteLine(VM_planeposition);
-                return VM_planeposition;
-
+                NotifyPropertyChanged("VM_PlanePosition");
             }
         }
 
