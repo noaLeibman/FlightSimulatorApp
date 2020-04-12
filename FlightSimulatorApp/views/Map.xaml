@@ -7,17 +7,23 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="PushpinControlTemplate" TargetType="m:Pushpin">
+            <Grid>
+                <Rectangle Width="24" Height="24">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="D:\Repo\Advanced1\Advanced1\airplane4.png"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
-        <m:Map x:Name="MyMap" CredentialsProvider="Ar61DlYtoDhXelcCPx4SdjSn1UsDH_whJ33OjYB3hiYIhHhX5EA2oTzp182RY89m"
-               Center="32.006333, 34.873331" ZoomLevel="5" >
-            <Canvas x:Name="airplaneIcon" Width="50" Height="80" Opacity="1" m:MapLayer.Position="{Binding map.VM_PlanePosition, UpdateSourceTrigger=PropertyChanged}">
-                <Image  Width="50" Height="80" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5, 0.5">
-                    <Image.Source>
-                        <BitmapImage UriSource="airplane4.png"/>
-                    </Image.Source>
-                </Image>
-            </Canvas>
+        <m:Map x:Name="MyMap" CredentialsProvider="Ar61DlYtoDhXelcCPx4SdjSn1UsDH_whJ33OjYB3hiYIhHhX5EA2oTzp182RY89m" Center="32.006333, 34.873331" ZoomLevel="1">
+            <m:Pushpin Template="{StaticResource PushpinControlTemplate}" m:MapLayer.Position="{Binding map.VM_PlanePosition, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+            </m:Pushpin>
         </m:Map>
     </Grid>
+
 </UserControl>
     

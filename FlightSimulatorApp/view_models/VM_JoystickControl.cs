@@ -26,7 +26,7 @@ namespace FlightSimulatorApp.view_models
             {
                 VM_rudder = value;
                 model.Write("set /controls/flight/rudder " + VM_rudder.ToString() + "\n");
-              
+
                 //function of model to send to server
             }
         }
@@ -39,9 +39,9 @@ namespace FlightSimulatorApp.view_models
             }
             set
             {
-                model.Write("set /controls/flight/elevator " + VM_elevator.ToString() + "\n"); 
+                model.Write("set /controls/flight/elevator " + VM_elevator.ToString() + "\n");
                 VM_elevator = value;
-           
+
             }
         }
         private double VM_throttle;
