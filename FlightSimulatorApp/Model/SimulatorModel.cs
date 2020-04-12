@@ -32,7 +32,9 @@ namespace FlightSimulatorApp.Model
         //coresponding properties:
         public double Heading
         {
-            get { return this.headingDeg; }
+            get { 
+                
+                return this.headingDeg; }
             set
             {
                 headingDeg = value;
@@ -50,7 +52,8 @@ namespace FlightSimulatorApp.Model
         }
         public double GroundSpeed
         {
-            get { return this.groundSpeed; }
+            get {
+                return this.groundSpeed; }
             set
             {
                 groundSpeed = value;
@@ -105,38 +108,23 @@ namespace FlightSimulatorApp.Model
         public double Latitude
         {
             get {
-                
                 return this.latitude; }
             set
             {
-               
                 latitude = value;
-                NotifyPropertyChanged("Latitude");
+                NotifyPropertyChanged("PlanePosition");
             }
         }
         public double Longitude
         {
             get {
-                
                 return this.longitude; }
             set
             {
-                
                 longitude = value;
-                NotifyPropertyChanged("Longitude");
+                NotifyPropertyChanged("PlanePosition");
             }
         }
-
-    //    public string PlanePosition
-    //    {
-     //       get { return this.planePosition; }
-      //      set
-     //       {
-     //           planePosition = value;
-                
-      //          NotifyPropertyChanged("PlanePosition");
-     //       }
-    //    }
         public SimulatorModel(TelnetClient client)
         {
             this.client = client;
@@ -168,6 +156,7 @@ namespace FlightSimulatorApp.Model
             {
                 while (!stop)
                 {
+                    
                     this.Latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
                     this.Longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
                     this.Heading = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));

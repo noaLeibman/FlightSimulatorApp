@@ -12,9 +12,7 @@ namespace FlightSimulatorApp.view_models
     {
         public string VM_Heading { get { return this.model.Heading.ToString(); } }
         public string VM_VerticalSpeed { get { return this.model.VerticalSpeed.ToString(); } }
-        public string VM_GroundSpeed { get {
-                Console.WriteLine(this.model.GroundSpeed.ToString());
-                return this.model.GroundSpeed.ToString(); } }
+        public string VM_GroundSpeed { get { return this.model.GroundSpeed.ToString(); } }
         public string VM_Airspeed { get { return this.model.Airspeed.ToString(); } }
         public string VM_GpsAltitude { get { return this.model.GpsAltitude.ToString(); } }
         public string VM_Roll { get { return this.model.Roll.ToString(); } }
