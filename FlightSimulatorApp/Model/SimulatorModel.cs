@@ -204,7 +204,6 @@ namespace FlightSimulatorApp.Model
                         this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
                         this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
                         this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
-                        Double.Parse("ERR");
                         Thread.Sleep(250);
                     } catch (Exception e)
                     {
