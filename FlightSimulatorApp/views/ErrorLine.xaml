@@ -12,6 +12,6 @@
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Messages:" Grid.Column="0" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <TextBox Grid.Column="1" Text="{Binding errorLine.VM_Message, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFDF1B1B"/>
+        <TextBox Grid.Column="1" Text="{Binding errorLine.VM_Message, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Foreground="#FFDF1B1B"/>
     </Grid>
 </UserControl>

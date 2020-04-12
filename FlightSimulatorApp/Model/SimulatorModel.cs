@@ -29,7 +29,7 @@ namespace FlightSimulatorApp.Model
         private double latitude = 32.8733;
         private double longitude = 34.0063;
         private string planePosition;
-        private string message;
+        private string message = "no messages for now";
         //coresponding properties:
         public double Heading
         {
@@ -112,6 +112,15 @@ namespace FlightSimulatorApp.Model
                 return this.latitude; }
             set
             {
+                if (value > 83)
+                {
+                    value = 83;
+                    this.Message = "Outerspace?! No! bad plane!";
+                } else if (value < -90)
+                {
+                    value = -90;
+                    this.Message = "Outerspace?! No! bad plane!";
+                }
                 latitude = value;
                 NotifyPropertyChanged("PlanePosition");
             }
@@ -122,6 +131,15 @@ namespace FlightSimulatorApp.Model
                 return this.longitude; }
             set
             {
+                if (value < -180)
+                {
+                    value = -180;
+                    this.Message = "Outerspace?! No! bad plane!";
+                } else if (value > 180)
+                {
+                    value = 180;
+                    this.Message = "Outerspace?! No! bad plane!";
+                }
                 longitude = value;
                 NotifyPropertyChanged("PlanePosition");
             }
@@ -146,11 +164,19 @@ namespace FlightSimulatorApp.Model
         {
             if (!connected)
             {
-                this.client.Connect(ip, port);
-                this.connected = true;
+                try
+                {
+                    this.client.Connect(ip, port);
+                    this.Message = "Connected!";
+                    this.connected = true;
+                    this.stop = false;
+                    this.Start();
+                }
+                catch (Exception e)
+                {
+                    this.Message = e.Message;
+                }
             }
-            this.stop = false;
-            this.Start();
         }
 
         public void Disconnect()
@@ -177,7 +203,7 @@ namespace FlightSimulatorApp.Model
                     this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
                     this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
                     this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
-                    Thread.Sleep(250);
+                    //Thread.Sleep(250);
                 }
             }).Start();
         }

@@ -11,7 +11,7 @@ namespace FlightSimulatorApp.view_models
     {
         private ISimulatorModel model;
         private string ip = "127.0.0.1";
-        private int port = 5402;
+        private int port = 5400;
         public string VM_IP 
         {
             get { return this.ip; }

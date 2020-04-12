@@ -29,6 +29,7 @@ namespace FlightSimulatorApp.view_models
             this.connect = new VM_Connect();
             this.connect.SetModel(model);
             this.errorLine = new VM_ErrorLine();
+            this.errorLine.SetModel(model);
         }
 
     }

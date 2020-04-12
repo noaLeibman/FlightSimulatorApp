@@ -17,7 +17,7 @@
                                 <TransformGroup>
                                     <ScaleTransform />
                                     <SkewTransform />
-                                    <RotateTransform Angle="{Binding cp.VM_Heading, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <RotateTransform />
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </ImageBrush.RelativeTransform>
