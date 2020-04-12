@@ -33,9 +33,11 @@ namespace FlightSimulatorApp.Model
         //coresponding properties:
         public double Heading
         {
-            get { 
-                
-                return this.headingDeg; }
+            get
+            {
+
+                return this.headingDeg;
+            }
             set
             {
                 headingDeg = value;
@@ -53,8 +55,10 @@ namespace FlightSimulatorApp.Model
         }
         public double GroundSpeed
         {
-            get {
-                return this.groundSpeed; }
+            get
+            {
+                return this.groundSpeed;
+            }
             set
             {
                 groundSpeed = value;
@@ -108,15 +112,18 @@ namespace FlightSimulatorApp.Model
         }
         public double Latitude
         {
-            get {
-                return this.latitude; }
+            get
+            {
+                return this.latitude;
+            }
             set
             {
                 if (value > 83)
                 {
                     value = 83;
                     this.Message = "Outerspace?! No! bad plane!";
-                } else if (value < -90)
+                }
+                else if (value < -90)
                 {
                     value = -90;
                     this.Message = "Outerspace?! No! bad plane!";
@@ -127,15 +134,18 @@ namespace FlightSimulatorApp.Model
         }
         public double Longitude
         {
-            get {
-                return this.longitude; }
+            get
+            {
+                return this.longitude;
+            }
             set
             {
                 if (value < -180)
                 {
                     value = -180;
                     this.Message = "Outerspace?! No! bad plane!";
-                } else if (value > 180)
+                }
+                else if (value > 180)
                 {
                     value = 180;
                     this.Message = "Outerspace?! No! bad plane!";
@@ -205,12 +215,14 @@ namespace FlightSimulatorApp.Model
                         this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
                         this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
                         Thread.Sleep(250);
-                    } catch (Exception e)
+                    }
+                    catch (Exception e)
                     {
                         if (e.Message == "Input string was not in a correct format.")
                         {
                             this.Message = "Server returned 'ERR'";
-                        } else
+                        }
+                        else
                         {
                             this.Message = "Seems like server is down:(";
                         }

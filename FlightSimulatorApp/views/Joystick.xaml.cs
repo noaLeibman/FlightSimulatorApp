@@ -49,16 +49,16 @@ namespace FlightSimulatorApp.views
                 Point last_good = new Point();
                 if (Math.Sqrt(x * x + y * y) <= KnobBase.Width / 2)
                 {
-                    CurrX = (double)System.Math.Round(x / 45, 2);
-                    CurrY = (double)System.Math.Round(y / -45, 2);
+                    CurrX = (double)System.Math.Round(x / (0.5*KnobBase.Width), 2);
+                    CurrY = (double)System.Math.Round(y / -(0.5*KnobBase.Width), 2);
                     knobPosition.X = x;
                     knobPosition.Y = y;
                     last_good = new Point(x, y);
                     if (Math.Sqrt(x * x + y * y) > KnobBase.Width / 2)
                     {
-                        CurrX = (double)System.Math.Round(x / 45, 2);
+                        CurrX = (double)System.Math.Round(x / (0.5*KnobBase.Width), 2);
                    
-                    CurrY = (double)System.Math.Round(y / -45, 2);
+                    CurrY = (double)System.Math.Round(y / -(0.5*KnobBase.Width), 2);
                         knobPosition.X = x;
                         knobPosition.Y = y;
                     }
@@ -95,6 +95,15 @@ namespace FlightSimulatorApp.views
         }
 
         private void Base_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CurrX = 0.00;
+            CurrY = 0.00;
+            knobPosition.X = 0;
+            knobPosition.Y = 0;
+            mySTB.Begin();
+        }
+
+        private void Base_MouseLeave(object sender, MouseEventArgs e)
         {
             CurrX = 0.00;
             CurrY = 0.00;
