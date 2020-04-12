@@ -1,32 +1,47 @@
 ﻿using System;
 using System.ComponentModel;
 using FlightSimulatorApp.Model;
+using Microsoft.Maps.MapControl.WPF;
 
 
 namespace FlightSimulatorApp.view_models
 {
     public class VM_Map : INotifyPropertyChanged
     {
-        private ISimulatorModel model;
 
+  
         public double VM_Latitude
-        {
-            get { return this.model.Latitude; }
+
+        { get 
+
+            {
+                return this.model.Latitude ; }
         }
+
+
         public double VM_Longitude
-        {
-            get { return this.model.Longitude; }
+        { 
+            get 
+            { 
+
+                return this.model.Longitude; } 
         }
-        public string VM_PlanePosition
+        private Location VM_planeposition;
+        public Location VM_PlanePosition
         {
+            set
+            {
+                VM_planeposition = value;
+            }
             get
             {
-                string position = this.model.PlanePosition;
-                Console.WriteLine(position);
-                return position;
+                Console.WriteLine(VM_planeposition);
+                return VM_planeposition;
+
             }
         }
 
+        private ISimulatorModel model;
         public void SetModel(ISimulatorModel model)
         {
             this.model = model;
