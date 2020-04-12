@@ -12,7 +12,7 @@
             <Grid>
                 <Rectangle Width="24" Height="24">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="C:\Users\noale\Desktop\AdvancedProgramming2\FlightSimulator\FlightSimulatorApp\airplane4.png">
+                        <ImageBrush ImageSource="D:\Advanced2\FlightSimulatorApp1\FlightSimulatorApp\FlightSimulator\airplane4.png">
                             <ImageBrush.RelativeTransform>
                                 <TransformGroup>
                                     <ScaleTransform />
