@@ -22,26 +22,43 @@ namespace FlightSimulatorApp.Model
         {
             this.client = new TcpClient(ip, port);
             this.stream = client.GetStream();
-            this.stream.ReadTimeout = 10000;
+            this.client.ReceiveTimeout = (10000);
 
         }
         public string Write(string command)
         {
-            MyMutex.WaitOne();
-            Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
-            stream.Write(data, 0, data.Length);
-            string answer = Read();
-            MyMutex.ReleaseMutex();
+            string answer = string.Empty;
+            try
+            {
+                MyMutex.WaitOne();
+                Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
+                stream.Write(data, 0, data.Length);
+                answer = Read();
+                MyMutex.ReleaseMutex();
+            }
+            catch (Exception e)
+            {
+                MyMutex.ReleaseMutex();
+                throw (e);            }
             return answer;
         }
         public string Read()
         {
+            String responseData = String.Empty;
+            try
+            {
                 MyMutex.WaitOne();
                 Byte[] data = new Byte[256];
-                String responseData = String.Empty;
-                Int32 bytes = stream.Read(data, 0, data.Length);
+                Int32 bytes = stream.Read(data, 0, data.Length);        
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                 MyMutex.ReleaseMutex();
+            }
+            catch (Exception e)
+            {
+                MyMutex.ReleaseMutex();
+                throw (e);
+            }
+            
                 return responseData;
         }
         public void Disconnect()
