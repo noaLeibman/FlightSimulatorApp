@@ -16,7 +16,7 @@ namespace FlightSimulatorApp.Model
         public event PropertyChangedEventHandler PropertyChanged;
         private Mutex mutex;
         public ITelnetClient client;
-        private volatile Boolean stop = true;
+        public volatile Boolean stop = true;
         private volatile Boolean connected = false;
         //airplane values:
         private double headingDeg = 0;
@@ -29,9 +29,18 @@ namespace FlightSimulatorApp.Model
         private double altimeterAltitude = 7;
         private double latitude = 32.8733;
         private double longitude = 34.0063;
-        private string planePosition;
         private string message = "no messages for now";
         //coresponding properties:
+
+        public bool IsStop
+        {
+            get
+            { return this.stop; }
+            set
+            {
+                this.stop = value;
+            }
+        }
         public double Heading
         {
             get
@@ -180,7 +189,7 @@ namespace FlightSimulatorApp.Model
                     this.client.Connect(ip, port);
                     this.Message = "Connected!";
                     this.connected = true;
-                    this.stop = false;
+                    this.IsStop = false;
                     this.Start();
                 }
                 catch (Exception e)
@@ -189,58 +198,65 @@ namespace FlightSimulatorApp.Model
                 }
             }
         }
-
         public void Disconnect()
         {
-            this.stop = true;
+            this.IsStop = true;
             this.client.Disconnect();
             this.connected = false;
         }
-
         public void Start()
         {
             new Thread(delegate ()
             {
-            while (!stop)
-            {
-                try
+                while (!IsStop)
                 {
-                    this.Latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
-                    this.Longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
-                    this.Heading = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
-                    this.VerticalSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-vertical-speed\n"));
-                    this.GroundSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-ground-speed-kt\n"));
-                    this.Airspeed = Double.Parse(this.client.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
-                    this.GpsAltitude = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-altitude-ft\n"));
-                    this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
-                    this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
-                    this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
-                    Thread.Sleep(250);
-                }
-                catch (IOException exception)
-                {
-                        this.stop = true;
-                        this.Message = "Timeout - Server not responding";
-                }
-                catch (Exception e)
-                {
+                    try
+                    {
+                        this.Latitude = Double.Parse(this.client.Write("get /position/latitude-deg\n"));
+                        this.Longitude = Double.Parse(this.client.Write("get /position/longitude-deg\n"));
+                        this.Heading = Double.Parse(this.client.Write("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
+                        this.VerticalSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-vertical-speed\n"));
+                        this.GroundSpeed = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-ground-speed-kt\n"));
+                        this.Airspeed = Double.Parse(this.client.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
+                        this.GpsAltitude = Double.Parse(this.client.Write("get /instrumentation/gps/indicated-altitude-ft\n"));
+                        this.Roll = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
+                        this.Pitch = Double.Parse(this.client.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
+                        this.AltimeterAltitude = Double.Parse(this.client.Write("get /instrumentation/altimeter/indicated-altitude-ft\n"));
+                        Thread.Sleep(250);
+                        this.AltimeterAltitude = Double.Parse("NaN");
+                    }
+                    catch (IOException exception)
+                    {
+                        if (exception.Message == "Unable to write data to the transport connection: An existing connection was forcibly closed by the remote host.")
+                        {
+                            this.Message = "Seems like server is down :(";
+                            connected = false;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(exception.Message);
+
+                            this.Message = "Timeout - Server not responding";
+                        }
+                        this.IsStop = true;
+                    }
+                    catch (Exception e)
+                    {
                         if (e.Message == "Input string was not in a correct format.")
                         {
                             this.Message = "Server returned 'ERR'";
                         }
                         else
                         {
+                            this.IsStop = true;
                             this.Message = "Seems like server is down:(";
-                            this.stop = true;
                             this.connected = false;
                         }
-
                     }
-
-                }
+                } 
             }).Start();
         }
-
         public void NotifyPropertyChanged(string name)
         {
             if (this.PropertyChanged != null)

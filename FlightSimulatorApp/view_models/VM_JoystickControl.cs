@@ -24,10 +24,19 @@ namespace FlightSimulatorApp.view_models
             }
             set
             {
-                VM_rudder = value;
-                model.Write("set /controls/flight/rudder " + VM_rudder.ToString() + "\n");
+                if (!model.IsStop)
+                {
+                    VM_rudder = value;
+                    try
+                    {
+                        model.Write("set /controls/flight/rudder " + VM_rudder.ToString() + "\n");
+                    }
+                    catch (Exception e)
+                    {
 
-                //function of model to send to server
+                    }
+                    //function of model to send to server
+                }
             }
         }
         private double VM_elevator;
@@ -39,9 +48,18 @@ namespace FlightSimulatorApp.view_models
             }
             set
             {
-                model.Write("set /controls/flight/elevator " + VM_elevator.ToString() + "\n");
-                VM_elevator = value;
+                if (!model.IsStop)
+                {
+                    VM_elevator = value;
+                    try
+                    {
+                        model.Write("set /controls/flight/elevator " + VM_elevator.ToString() + "\n");
+                    }
+                    catch (Exception e)
+                    {
 
+                    }
+                }
             }
         }
         private double VM_throttle;
@@ -54,7 +72,14 @@ namespace FlightSimulatorApp.view_models
             set
             {
                 VM_throttle = value;
-                model.Write("set /controls/engines/current-engine/throttle " + VM_throttle.ToString() + "\n");
+                if (!model.IsStop)
+                {
+                    try
+                    {
+                        model.Write("set /controls/engines/current-engine/throttle " + VM_throttle.ToString() + "\n");
+                    }
+                    catch (Exception e) { }
+                }
             }
         }
         private double VM_aileron;
@@ -66,9 +91,16 @@ namespace FlightSimulatorApp.view_models
             }
             set
             {
-                VM_aileron = value;
-                model.Write("set /controls/flight/aileron " + VM_aileron.ToString() + "\n");
-                //function of model to send to server
+                if (!model.IsStop)
+                {
+                    VM_aileron = value;
+                    try
+                    {
+                        model.Write("set /controls/flight/aileron " + VM_aileron.ToString() + "\n");
+                    }
+                    catch (Exception e) { }
+                    //function of model to send to server
+                }
             }
         }
 

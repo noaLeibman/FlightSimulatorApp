@@ -19,7 +19,6 @@ namespace FlightSimulatorApp.Model
         double Longitude { get; set; }
         string Message { get; set; }
         string Write(string command);
-
-
+        bool IsStop { get; set; }
     }
 }

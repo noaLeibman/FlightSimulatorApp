@@ -10,8 +10,8 @@ namespace FlightSimulatorApp.view_models
     public class VM_Connect
     {
         private ISimulatorModel model;
-        private string ip = "127.0.0.1";
-        private int port = 5402;
+        private string ip = (System.Configuration.ConfigurationSettings.AppSettings["defIP"]);
+        private int port = Int32.Parse(System.Configuration.ConfigurationSettings.AppSettings["defPort"]);
         public string VM_IP
         {
             get { return this.ip; }
