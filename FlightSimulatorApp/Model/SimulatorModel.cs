@@ -219,7 +219,7 @@ namespace FlightSimulatorApp.Model
                 }
                 catch (IOException exception)
                 {
-
+                        this.stop = true;
                         this.Message = "Timeout - Server not responding";
                 }
                 catch (Exception e)
@@ -231,6 +231,8 @@ namespace FlightSimulatorApp.Model
                         else
                         {
                             this.Message = "Seems like server is down:(";
+                            this.stop = true;
+                            this.connected = false;
                         }
 
                     }
