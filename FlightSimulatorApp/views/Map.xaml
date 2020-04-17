@@ -28,7 +28,7 @@
         </ControlTemplate>
     </UserControl.Resources>
     <Grid>
-        <m:Map x:Name="MyMap" CredentialsProvider="Ar61DlYtoDhXelcCPx4SdjSn1UsDH_whJ33OjYB3hiYIhHhX5EA2oTzp182RY89m" Center="32.006333, 34.873331" ZoomLevel="1">
+        <m:Map x:Name="MyMap" CredentialsProvider="Ar61DlYtoDhXelcCPx4SdjSn1UsDH_whJ33OjYB3hiYIhHhX5EA2oTzp182RY89m" Center="32.006333, 34.873331" ZoomLevel="10">
             <m:Pushpin Template="{StaticResource PushpinControlTemplate}" m:MapLayer.Position="{Binding map.VM_PlanePosition, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
             </m:Pushpin>
         </m:Map>
