@@ -28,7 +28,8 @@ namespace FlightSimulatorApp.views
             
             InitializeComponent();
             mySTB = Knob.FindResource("CenterKnob") as Storyboard;
-            mySTB.Stop();
+          //  Storyboard.SetTarget(mySTB, knobPosition);
+
         }
         Point first_pos_point = new Point();
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
@@ -44,6 +45,7 @@ namespace FlightSimulatorApp.views
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
+                
                 double x = e.GetPosition(this).X - first_pos_point.X;
                 double y = e.GetPosition(this).Y - first_pos_point.Y;
                 Point last_good = new Point();
@@ -96,20 +98,23 @@ namespace FlightSimulatorApp.views
 
         private void Base_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            mySTB.Begin();
             CurrX = 0.00;
             CurrY = 0.00;
             knobPosition.X = 0;
             knobPosition.Y = 0;
-            mySTB.Begin();
+            
         }
 
         private void Base_MouseLeave(object sender, MouseEventArgs e)
         {
+            mySTB.Begin();
             CurrX = 0.00;
             CurrY = 0.00;
             knobPosition.X = 0;
             knobPosition.Y = 0;
-            mySTB.Begin();
+
+            
         }
     }
 }
