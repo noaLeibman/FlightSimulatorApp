@@ -33,14 +33,16 @@ namespace FlightSimulatorApp.views
 
         private void PortInput(object sender, TextCompositionEventArgs e)
         {
-            Console.WriteLine(e.Text);
             try
             {
                 (Application.Current as App).ViewModel.connect.VM_Port = Int32.Parse(e.Text);
             }
             catch (Exception exp)
             {
-                //print to error screen
+                if (exp.Message == "")
+                {
+
+                }
             }
         }
 

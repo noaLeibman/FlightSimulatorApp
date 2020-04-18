@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using FlightSimulatorApp.Model;
+using System.Configuration;
 
 namespace FlightSimulatorApp.view_models
 {
     public class VM_Connect
     {
         private ISimulatorModel model;
-        private string ip = (System.Configuration.ConfigurationSettings.AppSettings["defIP"]);
-        private int port = Int32.Parse(System.Configuration.ConfigurationSettings.AppSettings["defPort"]);
+        private string ip = (ConfigurationManager.AppSettings["defIP"]);
+        private int port = Int32.Parse(ConfigurationManager.AppSettings["defPort"]);
         public string VM_IP
         {
             get { return this.ip; }

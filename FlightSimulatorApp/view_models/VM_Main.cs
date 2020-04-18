@@ -31,6 +31,5 @@ namespace FlightSimulatorApp.view_models
             this.errorLine = new VM_ErrorLine();
             this.errorLine.SetModel(model);
         }
-
     }
 }

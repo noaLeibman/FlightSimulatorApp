@@ -33,7 +33,10 @@ namespace FlightSimulatorApp.view_models
                     }
                     catch (Exception e)
                     {
+                        if (e.Message == "")
+                        {
 
+                        }
                     }
                     //function of model to send to server
                 }
@@ -57,7 +60,10 @@ namespace FlightSimulatorApp.view_models
                     }
                     catch (Exception e)
                     {
+                        if (e.Message == "")
+                        {
 
+                        }
                     }
                 }
             }
@@ -78,7 +84,12 @@ namespace FlightSimulatorApp.view_models
                     {
                         model.Write("set /controls/engines/current-engine/throttle " + VM_throttle.ToString() + "\n");
                     }
-                    catch (Exception e) { }
+                    catch (Exception e) {
+                        if (e.Message == "")
+                        {
+
+                        }
+                    }
                 }
             }
         }
@@ -98,7 +109,12 @@ namespace FlightSimulatorApp.view_models
                     {
                         model.Write("set /controls/flight/aileron " + VM_aileron.ToString() + "\n");
                     }
-                    catch (Exception e) { }
+                    catch (Exception e) {
+                        if (e.Message == "")
+                        {
+
+                        }
+                    }
                     //function of model to send to server
                 }
             }

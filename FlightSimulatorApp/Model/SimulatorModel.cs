@@ -20,13 +20,13 @@ namespace FlightSimulatorApp.Model
         private volatile Boolean connected = false;
         //airplane values:
         private double headingDeg = 0;
-        private double verticalSpeed = 1;
-        private double groundSpeed = 2;
-        private double airspeed = 3;
-        private double gpsAltitude = 4;
-        private double roll = 5;
-        private double pitch = 6;
-        private double altimeterAltitude = 7;
+        private double verticalSpeed = 0;
+        private double groundSpeed = 0;
+        private double airspeed = 0;
+        private double gpsAltitude = 0;
+        private double roll = 0;
+        private double pitch = 0;
+        private double altimeterAltitude = 0;
         private double latitude = 32.8733;
         private double longitude = 34.0063;
         private string message = "no messages for now";
@@ -133,9 +133,9 @@ namespace FlightSimulatorApp.Model
                     value = 83;
                     this.Message = "Outerspace?! No! bad plane!";
                 }
-                else if (value < -90)
+                else if (value < -80)
                 {
-                    value = -90;
+                    value = -80;
                     this.Message = "Outerspace?! No! bad plane!";
                 }
                 latitude = value;
@@ -150,14 +150,14 @@ namespace FlightSimulatorApp.Model
             }
             set
             {
-                if (value < -180)
+                if (value < -170)
                 {
-                    value = -180;
+                    value = -170;
                     this.Message = "Outerspace?! No! bad plane!";
                 }
-                else if (value > 180)
+                else if (value > 170)
                 {
-                    value = 180;
+                    value = 170;
                     this.Message = "Outerspace?! No! bad plane!";
                 }
                 longitude = value;
